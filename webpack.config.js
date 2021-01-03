@@ -57,6 +57,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      inject: false,
+      filename: 'CNAME',
+      templateContent: 'html-webpack-plugin.js.org'
+    }),
     new webpack.DefinePlugin({
       process: {
         env: {},
