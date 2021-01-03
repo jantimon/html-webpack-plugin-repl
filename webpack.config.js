@@ -31,19 +31,25 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: [
-              ["@babel/preset-env", { targets: { "chrome": "98", } }],
+              ["@babel/preset-env", { targets: { chrome: "98" } }],
               "@babel/preset-typescript",
             ],
-            plugins: [["@babel/transform-react-jsx", { runtime: 'automatic', importSource: 'preact' }]],
+            plugins: [
+              [
+                "@babel/transform-react-jsx",
+                { runtime: "automatic", importSource: "preact" },
+              ],
+            ],
           },
         },
       },
     ],
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
+    extensions: [".tsx", ".ts", ".js"],
     // Mock html-webpack-plugin node dependencies to run in a browser environment
     alias: {
+      console: require.resolve("console-browserify"),
       fs: require.resolve("./src/mocks/fs.js"),
       path: require.resolve("path-browserify"),
       tapable: require.resolve("./src/mocks/tapable.js"),
@@ -59,8 +65,8 @@ module.exports = {
     new HtmlWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: false,
-      filename: 'CNAME',
-      templateContent: 'html-webpack-plugin.js.org'
+      filename: "CNAME",
+      templateContent: "html-webpack-plugin.js.org",
     }),
     new webpack.DefinePlugin({
       process: {
